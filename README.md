@@ -47,7 +47,36 @@ $('#example').makeagames({
 });
 ```
 
+####Or with onGameover handler:
+```js
+$('#example').makeagames({
+    ...
+    onGameOver: function(){
+        alert('You Made It!');
+    }
+    ...
+});
+```
+
+## The Options
+| Preference        | Type      | Default Value                           | Options                                                       | Descriptions                                                                                          |
+|-----------------  |---------- |---------------------------------------  |-----------------------------------------------------------    |----------------------------------------------------------------------------------------------------   |
+| cols              | number    | 3                                       | > 1 number                                                    | define the columns and rows                                                                           |
+| random            | number    | 100                                     | infinity number                                               | how much the puzzle shuffling                                                                         |
+| imageLink         | link      | `$this.data('image')`                   | url of image                                                  | the image that will be used as puzzle. the default image is from `data-image` attribute of element    |
+| contentBox        | string    | number {i}                              | string or element                                             | the content of each slice box. use `{i}` to convert into ordinal number                               |
+| onGameOver        | function  | ```function(){ alert('Game Over'); }``` | function                                                      | function that will called after puzzle solved                                                         |
+| containerBorder   | number    | 1                                       | number                                                        | border of container                                                                                   |
+| sliceBorder       | number    | 1                                       | number                                                        | border of each slice                                                                                  |
+| borderColor       | color     | #222                                    | hexa color, rgb, rgba, true color                             | color of the border                                                                                   |
+| borderType        | string    | solid                                   | solid | dashed | dotted | groove | outset | inset | ridge     | border type                                                                                           |
+
 ## Changelog
+
+### v2.0.0 - 2016-05-08
+
+- Adding onGameOver handler
+- Editable content of each slice
 
 ### v1.0.0 - 2016-03-22
 
