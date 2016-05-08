@@ -1,17 +1,20 @@
 $.fn.makeAGames = function(options){
 
 	// lists of variable
-	var $this,imageWidth,imageHeight,containerSize,colSize,topN,leftN,currentRow,currentCol;
+	var $this,imageWidth,imageHeight,containerSize,colSize,topN,leftN,currentRow,currentCol,box_content,gameOver;
 	var rules = [];
+	gameOver = false;
 	
 	// define variable this
 	$this = $(this);
 
 	var defaults = {
-		'cols'				: 4, // 3 for now
+		'cols'  			: 4, // 3 for now
 		'random'			: 100,
-		'imageLink'			: $this.data('image'),
-		'animation'			: true,
+		'imageLink' 		: $this.data('image'),
+		'animation' 		: true,
+		'contentBox'		: "{i}",
+		'onGameOver' 		: function(){ alert('Game Over'); },
 		'containerBorder'	: 1,
 		'sliceBorder'		: 1,
 		'borderColor'		: '#222',
@@ -21,12 +24,6 @@ $.fn.makeAGames = function(options){
 	option = (typeof options == 'undefined') ? {} : options;
 
 	var setting = $.extend(defaults, option);
-
-	console.log(setting);
-	console.log(option);
-	console.log("Image Link => "+setting.imageLink);
-	console.log("Cols => "+setting.cols);
-	console.log("Animation => "+setting.animation);
 
 	imgames = new Image();
 	imgames.onerror = function() {
@@ -50,7 +47,8 @@ $.fn.makeAGames = function(options){
 
 		// adding the column
 		for (var i = 1; i <= (setting.cols*setting.cols); i++) {
-			addCol('<div mag-i="' + i + '" mag-p="' + i + '" class="mag-slice mag-bg mag-i-n-' + i + ' mag-bg-n-' + i + '">'+i+'</div>', $this);
+			box_content = setting.contentBox ? setting.contentBox.replace("{i}", i) : '';
+			addCol('<div mag-i="' + i + '" mag-p="' + i + '" class="mag-slice mag-bg mag-i-n-' + i + ' mag-bg-n-' + i + '">' + box_content + '</div>', $this);
 			currentRow = Math.floor((i-1)/setting.cols);
 			currentCol = ((i % setting.cols == 0 ? setting.cols : i % setting.cols)-1);
 			leftN = currentCol*colSize;
@@ -87,9 +85,6 @@ $.fn.makeAGames = function(options){
 		// remove the last slice
 		$('.mag-i-n-' + (setting.cols*setting.cols)).removeClass('mag-bg').addClass('mag-blank');
 
-		console.log(rules);
-		console.log(setting);
-
 		// randoming
 		var r_n_b = (setting.cols*setting.cols);
 		var r_n_b_r = rules[r_n_b];
@@ -98,10 +93,19 @@ $.fn.makeAGames = function(options){
 			moveTo($('.mag-slice.mag-i-n-' + r_n_b_r_o), $('.mag-slice.mag-blank'), {rules: rules});
 			r_n_b_r = rules[r_n_b_r_o];
 			r_n_b_r_o = r_n_b_r[Math.floor(Math.random() * r_n_b_r.length)];
-		}
+		};
 
 		$('.mag-slice').click(function(){
-			moveTo($(this), $('.mag-slice.mag-blank'), {rules: rules});
+			if ( ! gameOver) {
+				moveTo($(this), $('.mag-slice.mag-blank'), {rules: rules});
+				if (checkIfComplete()) {
+					// call onGameOver function
+					setting.onGameOver.call();
+					// disable the click event
+					gameOver = true;
+				};
+			};
+			return false;
 		});
 	};
 
@@ -128,7 +132,7 @@ function addStyle(css) {
 
 function moveTo(from, to, someoption){
 	var defaultopt = {
-		'rules'				: [], 
+		'rules' 			: [], 
 		'uniqueAttr'		: 'mag-i',
 		'classReverse'		: 'mag-i-n-'
 	};
@@ -146,10 +150,32 @@ function moveTo(from, to, someoption){
 
 function randomize(blank, some_o) {
 	var default_o = {
-		'rules'				: [], 
+		'rules' 			: [], 
 		'uniqueAttr'		: 'mag-i',
 		'classReverse'		: 'mag-i-n-'
 	};
 	my_o = (typeof some_o == 'undefined') ? {} : some_o;
 	var my_s = $.extend(default_o, my_o);
+}
+
+function checkIfComplete()
+{
+	var countslice = $('.mag-slice').length;
+	var countbyone = 0;
+	$('.mag-slice').each(function(_k,_v){
+		// current position
+		var cup = $(_v).attr('mag-i');
+		// should position
+		var shup = $(_v).attr('mag-p');
+
+		if (cup == shup) {
+			countbyone++;
+		}
+	});
+
+	if (countbyone == countslice) {
+		return true;
+	} else {
+		return false;
+	};
 }
