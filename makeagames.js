@@ -1,9 +1,9 @@
 $.fn.makeAGames = function(options){
 
 	// lists of variable
-	var $this,imageWidth,imageHeight,containerSize,colSize,topN,leftN,currentRow,currentCol,box_content,gameOver;
+	var $this,imageWidth,imageHeight,containerSize,colSize,topN,leftN,currentRow,currentCol,box_content,gameOver,timer,startTimer,countdown,step;
 	var rules = [];
-	gameOver = false;
+	gameOver = false,startTimer = false,timer = 0,step = 0;
 	
 	// define variable this
 	$this = $(this);
@@ -14,11 +14,12 @@ $.fn.makeAGames = function(options){
 		'imageLink' 		: $this.data('image'),
 		'animation' 		: true,
 		'contentBox'		: "{i}",
-		'onGameOver' 		: function(){ alert('Game Over'); },
+		'onGameOver' 		: function(timer){ alert('Complete in ' + timer + ' seconds.'); },
 		'containerBorder'	: 1,
 		'sliceBorder'		: 1,
 		'borderColor'		: '#222',
-		'borderType'		: 'solid'
+		'borderType'		: 'solid',
+		'timerBox'  		: $('#mag-timer')
 	};
 
 	option = (typeof options == 'undefined') ? {} : options;
@@ -96,11 +97,21 @@ $.fn.makeAGames = function(options){
 		};
 
 		$('.mag-slice').click(function(){
+			// step
+			step++;
+
+			if ( ! startTimer) {
+				startTimer = true;
+				// start counting
+				countdown = setInterval(counting, 1000);
+			}
 			if ( ! gameOver) {
 				moveTo($(this), $('.mag-slice.mag-blank'), {rules: rules});
 				if (checkIfComplete()) {
+					// stop counting
+					clearInterval(countdown);
 					// call onGameOver function
-					setting.onGameOver.call();
+					setting.onGameOver.call($this, timer, step);
 					// disable the click event
 					gameOver = true;
 				};
@@ -111,6 +122,14 @@ $.fn.makeAGames = function(options){
 
 	// image from url
 	imgames.src = setting.imageLink;
+
+	// timer 0
+	$(setting.timerBox).text(0);
+	
+	function counting(){
+		timer++;
+		$(setting.timerBox).text(timer);
+	}
 
 }
 
