@@ -1,7 +1,7 @@
 $.fn.makeAGames = function(options){
 
 	// lists of variable
-	var $this,imageWidth,imageHeight,containerSize,colSize,topN,leftN,currentRow,currentCol,box_content,gameOver,timer,startTimer,countdown,step;
+	var $this,imageWidth,imageHeight,topN,leftN,currentRow,currentCol,box_content,gameOver,timer,startTimer,countdown,step,containerSizeX,containerSizeY,colSizeX,colSizeY,newImageWidth,newImageHeight,desiredResizeImage,aspectRatio;
 	var rules = [];
 	gameOver = false,startTimer = false,timer = 0,step = 0;
 	
@@ -9,21 +9,31 @@ $.fn.makeAGames = function(options){
 	$this = $(this);
 
 	var defaults = {
-		'cols'  		: 4, // 3 for now
-		'random'		: 100,
-		'imageLink' 		: $this.data('image'),
-		'animation' 		: true,
-		'contentBox'		: "{i}",
-		'onGameOver' 		: function(timer, step){ alert('Complete in ' + timer + ' seconds and ' + step + ' steps.'); },
-		'containerBorder'	: 1,
-		'sliceBorder'		: 1,
-		'borderColor'		: '#222',
-		'borderType'		: 'solid',
-		'timerBox'  		: $('#mag-timer'),
-		'stepBox'		: $('#mag-step'),
-		'keyboardPlay'		: false,
-		'keyboardCode'		: {"up": 38, "down": 40, "right": 39, "left": 37},
-		'keyboardReverse'	: false
+		'cols'  			: 3, // (n) columns
+		'random'			: 100,  // number
+		'imageLink' 			: $this.data('image'),  // link | attr('data-image')
+		'animation' 			: true, // un-usable
+		'contentBox'			: "",  // {i} 
+		'onGameOver' 			: function(timer, step){ 
+							alert('Complete in ' + timer + ' seconds and ' + step + ' steps.'); 
+						},
+		'containerBorder'		: 1, // (n) px
+		'sliceBorder'			: 1, // (n) px
+		'borderColor'			: '#222', // #HEXA_COLOR | solid color | etc
+		'borderType'			: 'solid', // solid | dotted | dash | etc
+		'timerBox'  			: $('#mag-timer'),
+		'stepBox'			: $('#mag-step'),
+		'keyboardPlay'			: false, // true | false
+		'keyboardCode'			: {
+							"up": 38, 
+							"down": 40, 
+							"right": 39, 
+							"left": 37
+						},
+		'keyboardReverse'		: false, // true | false
+		'transparentBackground' 	: false, // true | false (un-usable)
+		'imageSize'			: 'image', // image | auto | (n)px
+		'resizeImage'			: 'horizontal' // horizontal | vertical
 	};
 
 	option = (typeof options == 'undefined') ? {} : options;
@@ -40,12 +50,40 @@ $.fn.makeAGames = function(options){
 		// set height and width
 		imageWidth = imgames.width;
 		imageHeight = imgames.height;
-		// the container size
-		containerSize = imageWidth+(setting.containerBorder*2)+(setting.sliceBorder*setting.cols*2);
-		// column size
-		colSize = Math.round(imageWidth/setting.cols);
+		
+		if (setting.imageSize=='image') {
+			desiredResizeImage = imageWidth;
+			setting.resizeImage = 'horizontal';
+		} else if(setting.imageSize=='auto') {
+			desiredResizeImage=$this.parent().outerWidth()-(setting.containerBorder*2)-(setting.sliceBorder*setting.cols*2);
+		} else {
+			desiredResizeImage = setting.imageSize.toString().replace(/^\s+|\D+$/g,'');
+		}
 
-		$this.cssify(containerSize,containerSize,colSize,colSize,setting.imageLink,setting.containerBorder,setting.sliceBorder,setting.borderType,setting.borderColor);
+		if (setting.resizeImage=='horizontal') {
+			aspectRatio = desiredResizeImage/imageWidth*100;
+		} else if(setting.resizeImage=='vertical') {
+			aspectRatio = desiredResizeImage/imageHeight*100;
+		} else {
+			$this.show_("resizeImage is wrong", $this, true);
+			return;
+		}
+		newImageWidth = aspectRatio/100*imageWidth;
+		newImageHeight = aspectRatio/100*imageHeight;
+		// the container size
+		containerSizeX = newImageWidth+(setting.containerBorder*2)+(setting.sliceBorder*setting.cols*2);
+		containerSizeY = newImageHeight+(setting.containerBorder*2)+(setting.sliceBorder*setting.cols*2);
+		// column size
+		colSizeX = Math.round(newImageWidth/setting.cols);
+		colSizeY = Math.round(newImageHeight/setting.cols);
+
+		// remove old cache (re-build system)
+		if ($('style#makeagames-style').length) {
+			$this.show_('',$this,true);
+			$this.show_('',$('style#makeagames-style'),true);
+		}
+
+		$this.cssify(containerSizeX,containerSizeY,colSizeX,colSizeY,setting.imageLink,setting.containerBorder,setting.sliceBorder,setting.borderType,setting.borderColor);
 
 		$this.buildColumn();
 
@@ -190,14 +228,14 @@ $.fn.makeAGames = function(options){
 			$this.addCol('<div mag-i="' + i + '" mag-p="' + i + '" class="mag-slice mag-bg mag-i-n-' + i + ' mag-bg-n-' + i + '">' + box_content + '</div>', $this);
 			currentRow = Math.floor((i-1)/setting.cols);
 			currentCol = ((i % setting.cols == 0 ? setting.cols : i % setting.cols)-1);
-			leftN = currentCol*colSize;
-			topN = currentRow*colSize;
+			leftN = currentCol*colSizeX;
+			topN = currentRow*colSizeY;
 			leftPosition = leftN+((currentCol)*2)+setting.containerBorder;
 			topPosition = topN+((currentRow)*2)+setting.containerBorder;
 			xBg = leftN;
 			yBg = topN;
 			$this.addStyle('.mag-i-n-' + i + '{top:' + topPosition + 'px; left:' + leftPosition + 'px}');
-			$this.addStyle('.mag-bg-n-' + i + '{background-position-y:' + -yBg + 'px; background-position-x:' + -xBg + 'px}');
+			$this.addStyle('.mag-bg-n-' + i + '{background-size: '+newImageWidth+'px '+newImageHeight+'px; background-position-y:' + -yBg + 'px; background-position-x:' + -xBg + 'px}');
 			
 			// set the rule
 			rule = [];
