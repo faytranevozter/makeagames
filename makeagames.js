@@ -125,7 +125,9 @@ $.fn.makeAGames = function(options){
 				setting.keyboardCode = {"up": dump.down, "down": dump.up, "right": dump.left, "left": dump.right};
 				delete dump;
 			}
-
+			
+			// detach keydown event
+			$(document).off('keydown');
 			$(document).keydown(function(e){
 				var key = e.which || e.keyCode || 0;
 				var blanked = $('.mag-slice.mag-blank');
