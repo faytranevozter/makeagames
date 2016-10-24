@@ -15,8 +15,8 @@ $.fn.makeAGames = function(options){
 		'animation' 			: true, // un-usable
 		'contentBox'			: "",  // {i} 
 		'onGameOver' 			: function(timer, step){ 
-							alert('Complete in ' + timer + ' seconds and ' + step + ' steps.'); 
-						},
+			alert('Complete in ' + timer + ' seconds and ' + step + ' steps.'); 
+		},
 		'containerBorder'		: 1, // (n) px
 		'sliceBorder'			: 1, // (n) px
 		'borderColor'			: '#222', // #HEXA_COLOR | solid color | etc
@@ -31,7 +31,7 @@ $.fn.makeAGames = function(options){
 							"left": 37
 						},
 		'keyboardReverse'		: false, // true | false
-		'transparentBackground' 	: false, // true | false (un-usable)
+		'transparentBackground' 	: false, // true | false
 		'imageSize'			: 'image', // image | auto | (n)px
 		'resizeImage'			: 'horizontal' // horizontal | vertical
 	};
@@ -95,7 +95,6 @@ $.fn.makeAGames = function(options){
 		$this.stepTo(step);
 
 		$('.mag-slice').click(function(){
-
 			if ( ! gameOver) {
 
 				if ($this.moveTo($(this), $('.mag-slice.mag-blank')) != false) {
@@ -125,8 +124,8 @@ $.fn.makeAGames = function(options){
 				setting.keyboardCode = {"up": dump.down, "down": dump.up, "right": dump.left, "left": dump.right};
 				delete dump;
 			}
-			
-			// detach keydown event
+
+			// detach 
 			$(document).off('keydown');
 			$(document).keydown(function(e){
 				var key = e.which || e.keyCode || 0;
@@ -144,6 +143,18 @@ $.fn.makeAGames = function(options){
 					var move_to = false;
 				}
 				
+				// prevent scrolling with keyboard arrows
+				var _contain = false;
+				var _kc = Object.keys(setting.keyboardCode).map(function (key) { return setting.keyboardCode[key]; });;
+				if((_kc.indexOf(32) > -1) && key==32) { _contain = true; }
+				if((_kc.indexOf(37) > -1) && key==37) { _contain = true; }
+				if((_kc.indexOf(38) > -1) && key==38) { _contain = true; }
+				if((_kc.indexOf(39) > -1) && key==39) { _contain = true; }
+				if((_kc.indexOf(40) > -1) && key==40) { _contain = true; }
+
+				if(!move_to && _contain) {
+					e.preventDefault();
+				}
 
 				if (move_to) {
 					
@@ -237,7 +248,7 @@ $.fn.makeAGames = function(options){
 			xBg = leftN;
 			yBg = topN;
 			$this.addStyle('.mag-i-n-' + i + '{top:' + topPosition + 'px; left:' + leftPosition + 'px}');
-			$this.addStyle('.mag-bg-n-' + i + '{background-size: '+newImageWidth+'px '+newImageHeight+'px; background-position-y:' + -yBg + 'px; background-position-x:' + -xBg + 'px}');
+			$this.addStyle('.mag-bg-n-' + i + '{background-size: ' + newImageWidth + 'px ' + newImageHeight + 'px; background-position-y:' + -yBg + 'px; background-position-x:' + -xBg + 'px; background-position: ' + -xBg + 'px ' + -yBg + 'px}');
 			
 			// set the rule
 			rule = [];
