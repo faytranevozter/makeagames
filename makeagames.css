@@ -4,11 +4,6 @@
 #makeagames > .mag-slice {
 	position: absolute;
 	display: inline-block;
-	/*-webkit-background-size: cover;
-	background-size: cover;*/
-	/* -webkit-transition: top,right,bottom,left .2s ease-in;
-	-o-transition: top,right,bottom,left .2s ease-in;
-	transition: top,right,bottom,left .2s ease-in; */
 	transition-property: top,right,bottom,left;
 	-webkit-transition-property: top,right,bottom,left;
 	-o-transition-property: top,right,bottom,left;
@@ -18,11 +13,9 @@
 	transition-timing-function: ease-in;
 	-webkit-transition-timing-function: ease-in;
 	-o-transition-timing-function: ease-in;
-	/*transition-delay: 1s;*/
 }
 
 .mag-slice:not(.mag-bg)
 {
-	/*border: 0;*/
 	background-color: #BCBCBC;
 }
