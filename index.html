@@ -1,0 +1,238 @@
+<h1><a id="user-content-make-a-games" class="anchor" href="#make-a-games" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Make A Games</h1>
+
+<p>Create and Play a puzzle game with your settings. Uses CSS3 and Jquery to make it work.</p>
+
+<p><a href="http://www.elfay.id">See Demo</a></p>
+
+<h2><a id="user-content-requirement" class="anchor" href="#requirement" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Requirement</h2>
+
+<ul>
+<li>jQuery library</li>
+<li>Makeagames Javascript</li>
+<li>Makeagames CSS stylesheet</li>
+</ul>
+
+<h2><a id="user-content-how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How to use</h2>
+
+<p>In the page <code>&lt;head&gt;</code> you'll need to load the requisite files</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">head</span>&gt;
+<span class="pl-c"><span class="pl-c">&lt;!--</span> ... <span class="pl-c">--&gt;</span></span>
+&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>js/jquery.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
+&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>js/makeagames.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
+&lt;<span class="pl-ent">link</span> <span class="pl-e">rel</span>=<span class="pl-s"><span class="pl-pds">"</span>stylesheet<span class="pl-pds">"</span></span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>css/makeagames.min.css<span class="pl-pds">"</span></span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/css<span class="pl-pds">"</span></span> /&gt;
+<span class="pl-c"><span class="pl-c">&lt;!--</span> ... <span class="pl-c">--&gt;</span></span>
+&lt;/<span class="pl-ent">head</span>&gt;</pre></div>
+
+<h4><a id="user-content-html" class="anchor" href="#html" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>HTML:</h4>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">div</span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>example<span class="pl-pds">"</span></span> <span class="pl-e">data-image</span>=<span class="pl-s"><span class="pl-pds">"</span>path/to/your/images.jpg<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">div</span>&gt;</pre></div>
+
+<h4><a id="user-content-basic-usage" class="anchor" href="#basic-usage" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Basic usage:</h4>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>#example<span class="pl-pds">'</span></span>).<span class="pl-en">makeagames</span>();</pre></div>
+
+<h4><a id="user-content-or-with-your-option" class="anchor" href="#or-with-your-option" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Or with your option:</h4>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>#example<span class="pl-pds">'</span></span>).<span class="pl-en">makeagames</span>({
+    cols<span class="pl-k">:</span> <span class="pl-c1">5</span>,
+    random<span class="pl-k">:</span> <span class="pl-c1">100</span>
+});</pre></div>
+
+<h4><a id="user-content-or-setting-image-from-option" class="anchor" href="#or-setting-image-from-option" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Or setting image from option:</h4>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>#example<span class="pl-pds">'</span></span>).<span class="pl-en">makeagames</span>({
+    cols<span class="pl-k">:</span> <span class="pl-c1">5</span>,
+    random<span class="pl-k">:</span> <span class="pl-c1">100</span>,
+    imageLink<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>path/to/your/images.jpg<span class="pl-pds">'</span></span>
+});</pre></div>
+
+<h4><a id="user-content-or-with-ongameover-handler" class="anchor" href="#or-with-ongameover-handler" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Or with onGameover handler:</h4>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>#example<span class="pl-pds">'</span></span>).<span class="pl-en">makeagames</span>({
+    <span class="pl-k">...</span>
+   <span class="pl-s"><span class="pl-pds">'</span><span class="pl-en">onGameOver</span><span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-k">function</span>(<span class="pl-smi">seconds</span>, <span class="pl-smi">step</span>){
+        <span class="pl-en">alert</span>(<span class="pl-s"><span class="pl-pds">'</span>Game Oversss!! in <span class="pl-pds">'</span></span> <span class="pl-k">+</span> seconds <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">'</span> seconds and <span class="pl-pds">'</span></span> <span class="pl-k">+</span> step <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">'</span> steps.<span class="pl-pds">'</span></span>);
+    },
+    <span class="pl-k">...</span>
+});</pre></div>
+
+<h4><a id="user-content-or-with-keyboardplay-handler" class="anchor" href="#or-with-keyboardplay-handler" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Or with keyboardPlay handler:</h4>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>#example<span class="pl-pds">'</span></span>).<span class="pl-en">makeagames</span>({
+    <span class="pl-k">...</span>
+    <span class="pl-s"><span class="pl-pds">'</span>keyboardPlay<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>,
+    <span class="pl-s"><span class="pl-pds">'</span>keyboardCode<span class="pl-pds">'</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>up<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">38</span>, 
+        <span class="pl-s"><span class="pl-pds">"</span>down<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">40</span>, 
+        <span class="pl-s"><span class="pl-pds">"</span>right<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">39</span>, 
+        <span class="pl-s"><span class="pl-pds">"</span>left<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">37</span>
+    },
+    <span class="pl-k">...</span>
+});</pre></div>
+
+<p>See <a href="https://www.cambiaresearch.com/articles/15/javascript-char-codes-key-codes">Refference Keyboard Code</a></p>
+
+<h4><a id="user-content-or-with-imagesize-handler" class="anchor" href="#or-with-imagesize-handler" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Or with imageSize handler:</h4>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>#example<span class="pl-pds">'</span></span>).<span class="pl-en">makeagames</span>({
+    <span class="pl-k">...</span>
+    <span class="pl-s"><span class="pl-pds">'</span>imageSize<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>500<span class="pl-pds">'</span></span>,
+    <span class="pl-s"><span class="pl-pds">'</span>resizeImage<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>horizontal<span class="pl-pds">'</span></span>,
+    <span class="pl-k">...</span>
+});</pre></div>
+
+<p>Note : 
+<strong>image</strong> : adjust image size
+<strong>auto</strong> : adjust size to parent width
+<strong>(n) px</strong> : resize to (n) px</p>
+
+<h2><a id="user-content-the-options" class="anchor" href="#the-options" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>The Options</h2>
+
+<table><thead>
+<tr>
+<th>Preference</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Options</th>
+<th>Descriptions</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>cols</td>
+<td>number</td>
+<td>3</td>
+<td>&gt; 1 number</td>
+<td>define the columns and rows</td>
+</tr>
+<tr>
+<td>random</td>
+<td>number</td>
+<td>100</td>
+<td>infinity number</td>
+<td>how much the puzzle shuffling</td>
+</tr>
+<tr>
+<td>imageLink</td>
+<td>string</td>
+<td><code>$this.data('image')</code></td>
+<td>url of image</td>
+<td>the image that will be used as puzzle. the default image is from <code>data-image</code> attribute of element</td>
+</tr>
+<tr>
+<td>contentBox</td>
+<td>string</td>
+<td>""</td>
+<td>string or element</td>
+<td>the content of each slice box. use <code>{i}</code> to convert into ordinal number</td>
+</tr>
+<tr>
+<td>onGameOver</td>
+<td>function</td>
+<td><code>function(){ alert('Game Over'); }</code></td>
+<td>function</td>
+<td>function that will called after puzzle solved</td>
+</tr>
+<tr>
+<td>containerBorder</td>
+<td>number</td>
+<td>1</td>
+<td>number</td>
+<td>border of container</td>
+</tr>
+<tr>
+<td>sliceBorder</td>
+<td>number</td>
+<td>1</td>
+<td>number</td>
+<td>border of each slice</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>#222</td>
+<td>hexa color, rgb, rgba, true color</td>
+<td>color of the border</td>
+</tr>
+<tr>
+<td>borderType</td>
+<td>string</td>
+<td>solid</td>
+<td>solid</td>
+<td>dashed</td>
+</tr>
+<tr>
+<td>timerBox</td>
+<td>element</td>
+<td>$('#mag-timer')</td>
+<td></td>
+<td>Element to display a timer</td>
+</tr>
+<tr>
+<td>stepBox</td>
+<td>element</td>
+<td>$('#mag-step')</td>
+<td></td>
+<td>Element to display a step</td>
+</tr>
+<tr>
+<td>keyboardPlay</td>
+<td>boolean</td>
+<td>false</td>
+<td>true / false</td>
+<td>use keyboard to play the game</td>
+</tr>
+<tr>
+<td>keyboardCode</td>
+<td>array / json</td>
+<td>{"up":38,"down":40,"right":39,"left":37}</td>
+<td>keyboard number</td>
+<td>what key to move the puzzle</td>
+</tr>
+<tr>
+<td>keyboardReverse</td>
+<td>boolean</td>
+<td>false</td>
+<td>true / false</td>
+<td>reverse movement</td>
+</tr>
+<tr>
+<td>imageSize</td>
+<td>string / number</td>
+<td>image</td>
+<td>image / auto / (n) px</td>
+<td>determine size the game.</td>
+</tr>
+<tr>
+<td>resizeImage</td>
+<td>string</td>
+<td>horizontal</td>
+<td>horizontal / vertical</td>
+<td>direction to resize if imageSize is set to (n)px</td>
+</tr>
+</tbody></table>
+
+<h2><a id="user-content-changelog" class="anchor" href="#changelog" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Changelog</h2>
+
+<h3><a id="user-content-v300---2016-10-17" class="anchor" href="#v300---2016-10-17" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>v3.0.0 - 2016-10-17</h3>
+
+<ul>
+<li>Play with keyboard</li>
+<li>Non Square Image</li>
+<li>Auto Resize Image</li>
+<li>Etc..</li>
+<li>Fixed Lot of Bug</li>
+</ul>
+
+<h3><a id="user-content-v200---2016-05-08" class="anchor" href="#v200---2016-05-08" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>v2.0.0 - 2016-05-08</h3>
+
+<ul>
+<li>Adding onGameOver handler</li>
+<li>Editable content of each slice</li>
+</ul>
+
+<h3><a id="user-content-v100---2016-03-22" class="anchor" href="#v100---2016-03-22" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>v1.0.0 - 2016-03-22</h3>
+
+<ul>
+<li>Release version</li>
+</ul>
