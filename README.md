@@ -1,16 +1,16 @@
-#Make A Games
+# Make A Games
 
 Create and Play a puzzle game with your settings. Uses CSS3 and Jquery to make it work.
 
 [See Demo](http://www.elfay.id)
 
 
-##Requirement
+## Requirement
 - jQuery library
 - Makeagames Javascript
 - Makeagames CSS stylesheet
 
-##How to use
+## How to use
 In the page `<head>` you'll need to load the requisite files
 ```html
 <head>
@@ -21,16 +21,16 @@ In the page `<head>` you'll need to load the requisite files
 <!-- ... -->
 </head>
 ```
-####HTML:
+#### HTML:
 ```html
 <div id="example" data-image="path/to/your/images.jpg"></div>
 ```
-####Basic usage:
+#### Basic usage:
 ```js
 $('#example').makeagames();
 ```
 
-####Or with your option:
+#### Or with your option:
 ```js
 $('#example').makeagames({
 	cols: 5,
@@ -38,7 +38,7 @@ $('#example').makeagames({
 });
 ```
 
-####Or setting image from option:
+#### Or setting image from option:
 ```js
 $('#example').makeagames({
 	cols: 5,
@@ -47,7 +47,7 @@ $('#example').makeagames({
 });
 ```
 
-####Or with onGameover handler:
+#### Or with onGameover handler:
 ```js
 $('#example').makeagames({
     ...
@@ -58,7 +58,7 @@ $('#example').makeagames({
 });
 ```
 
-####Or with keyboardPlay handler:
+#### Or with keyboardPlay handler:
 ```js
 $('#example').makeagames({
     ...
@@ -74,7 +74,7 @@ $('#example').makeagames({
 ```
 See [Refference Keyboard Code](https://www.cambiaresearch.com/articles/15/javascript-char-codes-key-codes)
 
-####Or with imageSize handler:
+#### Or with imageSize handler:
 ```js
 $('#example').makeagames({
     ...
