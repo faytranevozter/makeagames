@@ -83,10 +83,10 @@ $('#example').makeagames({
     ...
 });
 ```
-Note : 
-**image** : adjust image size
-**auto** : adjust size to parent width
-**(n) px** : resize to (n) px
+Note :  
+**image** : adjust image size  
+**auto** : adjust size to parent width  
+**(n) px** : resize to (n) px  
 
 ## The Options
 | Preference      | Type            | Default Value                            | Options                           | Descriptions                                                                                       |
